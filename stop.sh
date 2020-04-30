@@ -6,10 +6,10 @@
 
 # Search for running media applications
 # and store into apps array
-apps=(`qdbus | grep org.mpris.MediaPlayer2 | sed 's/.*\.//'`)
+apps=(`qdbus | grep org.mpris.MediaPlayer2`)
 
 # For each application send the "Stop" command
 for app in "${apps[@]}"
   do
-        qdbus org.mpris.MediaPlayer2.$app /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+        qdbus $app /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
   done
